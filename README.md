@@ -33,5 +33,54 @@ Due to running into memory allocation errors, I decided to reduce the image down
 ### Original Image Sample
 ![Original image sample](https://github.com/josephseverino/distracted_driver/blob/master/img_99.jpg)
 
-### After process
+### After Processing Image
 ![Transformed Image](https://github.com/josephseverino/distracted_driver/blob/master/New_Image.jpg)
+
+
+## Model Architecture
+
+```
+def BN_model():
+
+    model = Sequential()
+    model.add(Conv2D(16, 3, input_shape=(120, 160, 1)))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    model.add(Conv2D(16, 3))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Conv2D(32, 3))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    model.add(Conv2D(32, 3))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.5))
+    model.add(Flatten())
+    model.add(Dense(256))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(64))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    model.add(Dense(num_classes))
+    model.add(BatchNormalization())
+    model.add(Activation('softmax'))
+    model.compile(loss= 'categorical_crossentropy' , optimizer= 'adam' , metrics=[ 'accuracy' ])
+    return model
+
+# build the model
+model = BN_model()
+```
+
+I used a simple CNN with several layers. I used both BatchNormalization and Dropout to mitigate the amount of overfitting the model produced. 
+
+## Results - Accuracy Train/Validation/Test Set
+
+![Accuracy](https://github.com/josephseverino/distracted_driver/blob/master/Accuracy.jpg)
+
+
