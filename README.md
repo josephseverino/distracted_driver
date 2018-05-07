@@ -20,3 +20,6 @@ The 0 here reads in the image as a grey scale image. This process helped my mode
 ```
 edges = cv2.Canny(img, 50,100)
 ```
+Here, I decided to use openCV's edge detection method. My rationale is that most of information of the different orientations of the driver is represented by detecting the were the outline of the drivers face is oriented or where is hands are (e.g. facing the passenger or right or left hand with their cellphone.   
+
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
