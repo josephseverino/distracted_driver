@@ -20,6 +20,18 @@ The 0 here reads in the image as a grey scale image. This process helped my mode
 ```
 edges = cv2.Canny(img, 50,100)
 ```
-Here, I decided to use openCV's edge detection method. My rationale is that most of information of the different orientations of the driver is represented by detecting the were the outline of the drivers face is oriented or where is hands are (e.g. facing the passenger or right or left hand with their cellphone.   
+Here, I decided to use openCV's edge detection method. My rationale is that most of information of the different orientations of the driver is represented by detecting the were the outline of the drivers face is oriented or where is hands are. (e.g. facing the passenger or right or left hand with their cellphone). I choose the arguments to be 50 and 100 simply because it is what preserved the most edges of the photo without being too noisy.
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+### Step 3 - Resize
+
+```
+rs = cv2.resize(edges, (int(edges.shape[1]/4), int(edges.shape[0]/4)), interpolation = cv2.INTER_AREA)
+```
+
+Due to running into memory allocation errors, I decided to reduce the image down to 120 x 160 pixels which is 1/4 the size of its original format. This made my computation expense 1/4 what it normally be so I could make a more robust architecture.
+
+### Original Image Sample
+![Original image sample](https://github.com/josephseverino/distracted_driver/blob/master/img_99.jpg)
+
+### After process
+![Transformed Image](https://github.com/josephseverino/distracted_driver/blob/master/New_Image.jpg)
