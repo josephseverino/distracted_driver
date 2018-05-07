@@ -81,6 +81,6 @@ I used a simple CNN with several layers. I used both BatchNormalization and Drop
 
 ## Results - Accuracy Train/Validation/Test Set
 
-![Accuracy](https://github.com/josephseverino/distracted_driver/blob/master/Accuracy.jpg)
+![Accuracy](https://github.com/josephseverino/distracted_driver/blob/master/Results.png)
 
 
